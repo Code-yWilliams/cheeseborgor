@@ -19,7 +19,6 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-
 development:
   <<: *default
   database: cheeseborgor_development
@@ -80,6 +79,4 @@ test:
 #
 production:
   <<: *default
-  database: cheeseborgor_production
-  username: cheeseborgor
-  password: <%= ENV["CHEESEBORGOR_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
