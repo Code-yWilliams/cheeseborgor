@@ -120,7 +120,7 @@ GEM
     hashie (5.0.0)
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
-    inertia_rails (3.9.0)
+    inertia_rails (3.10.0)
       railties (>= 6)
     io-console (0.8.1)
     irb (1.15.2)
@@ -394,7 +394,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv
-  inertia_rails (~> 3.9)
+  inertia_rails (~> 3.10)
   jbuilder
   kamal
   omniauth-auth0 (~> 3.0)
