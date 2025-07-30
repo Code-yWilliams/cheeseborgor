@@ -9,9 +9,14 @@ module Secured
       @current_user ||= User.find_by(email: session[:userinfo]["email"]) if session[:userinfo].present?
     end
 
-
     def require_auth
       redirect_to "/login" unless current_user.present?
+    end
+
+    inertia_share do
+      {
+        currentUser: current_user
+      }
     end
   end
 end

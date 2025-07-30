@@ -1,23 +1,26 @@
-import { Head } from '@inertiajs/react'
-import { useState } from 'react'
+import { Head, usePage } from "@inertiajs/react";
+import { useState } from "react";
 
-import inertiaSvg from '/assets/inertia.svg'
-import reactSvg from '/assets/react.svg'
-import viteRubySvg from '/assets/vite_ruby.svg'
+import inertiaSvg from "/assets/inertia.svg";
+import reactSvg from "/assets/react.svg";
+import viteRubySvg from "/assets/vite_ruby.svg";
 
-import cs from './InertiaExample.module.css'
+import cs from "./InertiaExample.module.css";
+import { SharedInertiaData } from "../ts-types.ts";
 
-export default function InertiaExample({ name }: { name: string }) {
-  const [count, setCount] = useState(0)
+export default function InertiaExample() {
+  const [count, setCount] = useState(0);
+  const { currentUser } = usePage<SharedInertiaData>().props;
 
   return (
     <>
       <Head title="Inertia + Vite Ruby + React Example" />
 
       <div className={cs.root}>
-        <h1 className={cs.h1}>Hello {name}!</h1>
+        <h1 className={cs.h1}>Hello {currentUser.name}!</h1>
 
         <div>
+          <a href="/auth/logout">Logout</a>
           <a href="https://inertia-rails.dev" target="_blank">
             <img className={cs.logo} src={inertiaSvg} alt="Inertia logo" />
           </a>
@@ -56,5 +59,5 @@ export default function InertiaExample({ name }: { name: string }) {
         </p>
       </div>
     </>
-  )
+  );
 }
