@@ -10,7 +10,7 @@ module Secured
     end
 
     def require_auth
-      redirect_to "/login" unless current_user.present?
+      redirect_to :root unless current_user.present?
     end
 
     inertia_share do
