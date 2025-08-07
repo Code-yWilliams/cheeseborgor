@@ -3,7 +3,4 @@ class HomeController < ApplicationController
   def index
     render inertia: "InertiaExample"
   end
-
-  def public
-  end
 end
