@@ -1,5 +1,4 @@
-class HomeController < ApplicationController
-  include Secured
+class HomeController < SecuredApplicationController
   def index
     render inertia: "InertiaExample"
   end
