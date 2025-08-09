@@ -1,22 +1,20 @@
 module Secured
   extend ActiveSupport::Concern
 
-  included do
+    included do
     before_action :require_auth
-
-    helper_method :current_user
-    def current_user
-      @current_user ||= User.find_by(email: session[:userinfo]["email"]) if session[:userinfo].present?
-    end
+    before_action :require_profile_setup, unless: :profile_setup_complete_or_on_setup_page
 
     def require_auth
       redirect_to :root unless current_user.present?
     end
 
-    inertia_share do
-      {
-        currentUser: current_user
-      }
+    def require_profile_setup
+      redirect_to "/profile-setup"
+    end
+
+    def profile_setup_complete_or_on_setup_page
+      current_user.username.present? || request.path == "/profile-setup"
     end
   end
 end
