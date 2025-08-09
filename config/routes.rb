@@ -12,8 +12,10 @@ Rails.application.routes.draw do
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/failure" => "auth0#failure"
   get "/auth/logout" => "auth0#logout"
-  get "/" => "landing#index"
-  get "/home" => "home#index"
+  get "/profile-setup" => "profile_setup#index"
+  post "profile-setup" => "profile_setup#create"
+  get "/home" => "home#index", as: :home
+
 
   root "landing#index"
 end
