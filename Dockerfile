@@ -53,7 +53,7 @@ RUN bundle install && \
 
 # Install NPM Packages - copy all necessary files for Vite
 COPY package.json package-lock.json ./
-COPY vite.config.ts tsconfig*.json components.json ./
+COPY vite.config.ts tsconfig*.json  ./
 RUN npm ci --omit=dev
 
 # Copy application code
