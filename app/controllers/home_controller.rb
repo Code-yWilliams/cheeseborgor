@@ -1,5 +1,6 @@
 class HomeController < SecuredApplicationController
-  def index
-    render inertia: "InertiaExample"
+  def show
+    username = params[:username]
+    render inertia: "InertiaExample", props: { isOwner: current_user.username == username }
   end
 end

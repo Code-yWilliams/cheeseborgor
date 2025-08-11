@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(email: session[:userinfo]["email"]) if session[:userinfo].present?
   end
 
+  def current_user_home_path
+    "/#{current_user&.username}"
+  end
+
   inertia_share do
     {
       csrfToken: form_authenticity_token,

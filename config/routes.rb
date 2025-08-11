@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
+  root "landing#index"
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -12,10 +12,8 @@ Rails.application.routes.draw do
   get "/auth/auth0/callback" => "auth0#callback"
   get "/auth/failure" => "auth0#failure"
   get "/auth/logout" => "auth0#logout"
-  get "/profile-setup" => "profile_setup#index"
+  get "/profile-setup" => "profile_setup#index", as: :profile_setup
   post "profile-setup" => "profile_setup#create"
   get "/home" => "home#index", as: :home
-
-
-  root "landing#index"
+  get "/:username" => "home#show"
 end

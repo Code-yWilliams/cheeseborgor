@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { router } from "@inertiajs/react";
+import { router, usePage } from "@inertiajs/react";
 import {
   Card,
   CardContent,
@@ -14,19 +14,10 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 
 export default function PasswordSetupPage() {
   const [username, setUsername] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState("");
+  const { errors } = usePage().props;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setError("");
-
-    if (!username.trim()) {
-      setError("Username is required");
-      return;
-    }
-
-    setIsLoading(true);
 
     router.post("/profile-setup", {
       username: username.trim(),
@@ -47,9 +38,9 @@ export default function PasswordSetupPage() {
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
-            {error && (
+            {errors?.username && (
               <Alert variant="destructive">
-                <AlertDescription>{error}</AlertDescription>
+                <AlertDescription>{errors.username}</AlertDescription>
               </Alert>
             )}
 
@@ -61,13 +52,12 @@ export default function PasswordSetupPage() {
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter your username"
-                disabled={isLoading}
                 required
               />
             </div>
 
-            <Button type="submit" className="w-full" disabled={isLoading}>
-              {isLoading ? "Setting up..." : "Complete Setup"}
+            <Button type="submit" className="w-full" disabled={false}>
+              Complete Setup
             </Button>
           </form>
         </CardContent>
