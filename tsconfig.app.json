@@ -10,7 +10,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./app/frontend/*"],
-      "@app/*": ["./app/frontend/*"]
+      "@app/*": ["./app/frontend/*"],
+      "@components/*": ["./app/frontend/components/*"],
+      "@tstypes/*": ["./app/frontend/ts-types/*"]
     },
 
     /* Bundler mode */

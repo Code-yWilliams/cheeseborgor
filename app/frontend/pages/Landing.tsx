@@ -1,5 +1,5 @@
 import { usePage } from "@inertiajs/react";
-import { SharedInertiaData } from "../ts-types.ts";
+import { SharedInertiaData } from "@tstypes/SharedInertiaData";
 import { Button } from "@app/components/ui/button";
 import {
   Card,

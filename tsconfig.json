@@ -7,12 +7,5 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ],
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./app/frontend/*"],
-      "@app/*": ["./app/frontend/*"]
-    }
-  }
+  ]
 }

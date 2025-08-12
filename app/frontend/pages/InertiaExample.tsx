@@ -6,9 +6,9 @@ import reactSvg from "/assets/react.svg";
 import viteRubySvg from "/assets/vite_ruby.svg";
 
 import cs from "./InertiaExample.module.css";
-import { SharedInertiaData } from "../ts-types.ts";
+import { SharedInertiaData } from "@tstypes/SharedInertiaData";
 
-export default function InertiaExample() {
+export default function InertiaExample({ isOwner }: { isOwner: boolean }) {
   const [count, setCount] = useState(0);
   const { currentUser } = usePage<SharedInertiaData>().props;
 
